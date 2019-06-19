@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput, TouchableOpacity,Picker,StatusBar} from 'react-native';
+import {Platform, StyleSheet, Text, View, TextInput, TouchableOpacity,Picker,StatusBar, ScrollView} from 'react-native';
 import Textinput from "./component/input";
 
 const blue =  "#428AF8";
@@ -31,39 +31,41 @@ export default class App extends Component<Props> {
     
   render() {
     return (  
-        <View style={styles.container}>
-        <StatusBar backgroundColor="lightgreen" barStyle="light-content"/>
-        <Text style={styles.welcomename}>Halo, Selamat Datang!</Text>
-        <Text style={styles.welcome}>Sudah ke kebun hari ini?</Text>
-        <Text style={styles.welcome}>Ayo ke kebun dan mulai aktivitasmu di hari yang cerah ini!</Text>
-        <View style={styles.form}>
-        <Text style={styles.label}>Username</Text>
-        <Textinput
-        style={styles.input}
-        placeholder = "masukkan username" 
-        onChangeText={text => this.handleinput("username",text)}
-        />
-      <View style={styles.input2}>
-      <Text style={styles.label}>Password</Text>
-        <Textinput
-        secureTextEntry={true}
-        style={styles.input}
-        placeholder = "masukkan Password" 
-        type="password"
-        onChangeText={text => this.handleinput("password",text)}
-        />
-      </View>
-        
+        <ScrollView>
+          <View style={styles.container}>
+          <StatusBar backgroundColor="lightgreen" barStyle="light-content"/>
+          <Text style={styles.welcomename}>Halo, Selamat Datang!</Text>
+          <Text style={styles.welcome}>Sudah ke kebun hari ini?</Text>
+          <Text style={styles.welcome}>Ayo ke kebun dan mulai aktivitasmu di hari yang cerah ini!</Text>
+          <View style={styles.form}>
+          <Text style={styles.label}>Username</Text>
+          <Textinput
+          style={styles.input}
+          placeholder = "masukkan username" 
+          onChangeText={text => this.handleinput("username",text)}
+          />
+        <View style={styles.input2}>
+        <Text style={styles.label}>Password</Text>
+          <Textinput
+          secureTextEntry={true}
+          style={styles.input}
+          placeholder = "masukkan Password" 
+          type="password"
+          onChangeText={text => this.handleinput("password",text)}
+          />
+        </View>
+      
 
-       <TouchableOpacity
-       disabled={!this.state.password}
-         style={[styles.button, { backgroundColor: this.state.password ? 'lightgreen' : 'lightgray' }]} 
-         onPress={this.onPress}
-       ><Text style={styles.buttontext}> Login </Text>
-       </TouchableOpacity>
-       <Text style={styles.label2}>Lupa kata sandi?</Text>
-         </View>
-      </View>
+         <TouchableOpacity
+         disabled={!this.state.password}
+           style={[styles.button, { backgroundColor: this.state.password ? 'lightgreen' : 'lightgray' }]} 
+           onPress={this.onPress}
+         ><Text style={styles.buttontext}> Login </Text>
+         </TouchableOpacity>
+         <Text style={styles.label2}>Lupa kata sandi?</Text>
+           </View>
+        </View>
+      </ScrollView>
     );
   }
 }
